@@ -1,0 +1,74 @@
+INTRODUCTION
+
+This code book is used for:
+a) describing each step applied to clean and tidy data
+b) describing/ labelling the variables found in the tydyData.txt document
+
+ANALYSIS FRAMEWORK
+
+a) Describing the steps
+
+1. Read in files and merge data
+label files: acvity_labels.txt and features.txt
+test data: subject_test.txt, X_test.txt and y_test.txt
+training data: subject_train.txt, X_train.txt and y_train.txt
+merge all test data files horizontally into one test data
+merge all train data files horizontally into one training data
+merge the test data and the training data vertically into one dataset
+
+2. Extract only the mean and stardard deviation of the measurements
+keep the subject Id and activity columns
+identify columns names with "mean" or "standardDeviation"
+
+3. Use descriptive activity names to name the activities in the data set
+change the activity column from numbers 1-6 to descriptive activities: WALKING, WALKING_UPSTAIS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING.
+  
+4. Label the dataset with the descriptive names
+remove the () in the columns to make the variable names clean
+for a description of the variables, please refer to FEATURE VARIABLES below
+  
+5. Create a second, independent tidy dataset with the average of each variable for each activity and each subject
+load the dplyr package to: group the dataset by subject Id and activity; summarize the grouped dataset and calculate the average of eacha variable
+
+For the detailed script, please look at run_analysis.R file.
+
+b) Labelling the variables
+
+FEATURE VARIABLES
+
+Time signals
+tBodyAcc-XYZ
+tGravityAcc-XYZ
+tBodyAccJerk-XYZ
+tGravityAccJerk-XYZ
+tBodyAccJerk-XYZ
+tBodyAccMag
+tGravityAccMag
+tBodyAccJerkMag
+tBodyGyroMag
+tBodyGyroJerkMag
+
+Frequency domain signals
+fBodyAcc-XYZ
+fBodyAccJerk-XYZ
+fBodyGyro-XYZ
+fBodyAccMag
+fBodyAccJerkMag
+fBodyGyroMag
+fBodyGyroJerkMag
+
+OTHER VARIABLES
+
+sujectId: ranges from 1 to 30 and is the identification code of each subject who takes place in this reseach.
+activity: six activities (WALKING, WALKING_UPSTAIRS, WALKING-DOWNSTAIRS, SITTING, STANDING,LAYING) which subjects had perfomed wearing a smartphone on their waist.
+
+Other informations
+
+FEATURE SELECTION
+
+The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. 
+
+The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain. See 'features_info.txt' for more details. 
+
+ORIGIN OF DATA: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+REFERENCE: Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. A Public Domain Dataset for Human Activity Recognition Using Smartphones. 21th European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning, ESANN 2013. Bruges, Belgium 24-26 April 2013.
